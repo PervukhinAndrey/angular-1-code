@@ -1,0 +1,57 @@
+<section class="warehouse-container" *ngIf="currentWhIdx">
+  <h3>Warehhouse </h3>
+
+  <kendo-grid
+  [kendoGridBinding]="gridView"
+  kendoGridSelectBy="ProductID"
+  [(selectedKeys)]="mySelection"
+  [selectable]="{ mode: 'multiple', drag: true }"
+  [pageSize]="20"
+  [pageable]="true"
+  [sortable]="true"
+  [groupable]="true"
+  [reorderable]="true"
+  [resizable]="true"
+  [height]="500"
+  
+  [columnMenu]="{ filter: true }"
+  (edit)="editHandler($event)"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <kendo-textbox
+      [style.width.px]="165"
+      placeholder="Search in product name..."
+      (valueChange)="onFilter($event)"
+    ></kendo-textbox>
+    <kendo-grid-spacer></kendo-grid-spacer>
+  </ng-template>
+  <kendo-grid-column field="ProductID" title="Num" [width]="40">
+  </kendo-grid-column>
+    <kendo-grid-column field="place" title="Storage place" [width]="220">
+    </kendo-grid-column>
+    <kendo-grid-column field="ProductName" title="Product Name" [width]="320">
+    </kendo-grid-column>
+  <kendo-grid-column field="dateIn" title="Date of placement" [width]="220">
+    <ng-template kendoGridCellTemplate let-dataItem>
+
+      <div >
+        <em>{{ intl.toString(dataItem.dateIn, "yyyy-MM-dd") }}</em>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="dateOut" title="Date of issue" [width]="220">
+  </kendo-grid-column>
+    <kendo-grid-command-column title="command" [width]="40">
+      <ng-template kendoGridCellTemplate>
+        <button kendoGridEditCommand [primary]="true">Edit</button>
+      </ng-template>
+    </kendo-grid-command-column>
+</kendo-grid>
+<app-edit-form
+[model]="editDataItem"
+
+ (save)="saveHandler($event)"
+  (cancel)="cancelHandler()" 
+>
+</app-edit-form>
+</section>

@@ -1,0 +1,23 @@
+<div class="login-container">
+  <div class="login-modal">
+    <div class="login-inputs">
+      <kendo-label text="E-mail" [for]="email">  </kendo-label>
+      <kendo-textbox placeholder="e-mail" #email="ngModel" [ngModelOptions]="{ updateOn: 'blur' }" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"  (valueChange)="clearError()" [(ngModel)]="login"></kendo-textbox>
+    
+      <kendo-label text="Password" [for]="textbox2">  </kendo-label>
+      <kendo-textbox placeholder="password"  #textbox2 (valueChange)="clearError()" [(ngModel)]="password"></kendo-textbox>
+    </div>
+
+    <button kendoButton (click)="onButtonClick()" [disabled]="email.errors?.['pattern']||login.length===0||password.length===0" themeColor="primary">
+      LOGIN
+    </button>
+
+  </div>
+  <ng-container *ngIf="isShowError">
+    <div class="login-error">
+      <span>The entered e-mail or password is incorrect</span>
+
+    </div>
+  </ng-container>
+
+</div>

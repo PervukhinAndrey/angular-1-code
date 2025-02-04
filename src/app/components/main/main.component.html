@@ -1,0 +1,6 @@
+<app-header></app-header>
+<main class="main-container">
+
+<app-side-menu [warehousesList]="warehousesList" (selected_idx)="add_selected_idx($event)"></app-side-menu> 
+<app-warehouse [selectedIdx]="selectedIdx"></app-warehouse>
+</main>

@@ -1,0 +1,14 @@
+<div class="side-menu-container">
+
+    <kendo-treeview
+      kendoTreeViewExpandable
+      [nodes]="warehousesList"
+      textField="text"
+      [hasChildren]="hasChildren"
+      [children]="fetchChildren"
+
+      [isSelected]="isItemSelected"
+      (selectionChange)="handleSelection($event)"
+    >
+    </kendo-treeview>
+  </div>

@@ -1,0 +1,135 @@
+<kendo-dialog
+*ngIf="active"
+[width]="300"
+[height]="450"
+(close)="closeForm()"
+>
+<kendo-dialog-titlebar>
+  Edit product 
+</kendo-dialog-titlebar>
+
+<form novalidate class="k-form k-form-md" [formGroup]="editForm">
+    <kendo-formfield>
+        <kendo-label
+          [for]="ProductName"
+          text="Product name"
+          labelCssClass="k-form-label"
+        ></kendo-label>
+        <kendo-textbox
+          #ProductName
+          formControlName="ProductName"
+          required
+        ></kendo-textbox>
+ 
+        <kendo-formhint>Type product name</kendo-formhint>
+        <kendo-formerror>Error: Product name is required</kendo-formerror> 
+    </kendo-formfield>
+    <kendo-formfield>
+        <kendo-label
+          [for]="place"
+          text="Place"
+          labelCssClass="k-form-label"
+        ></kendo-label>
+        <kendo-textbox
+          #place
+          formControlName="place"
+          required
+        ></kendo-textbox>
+ 
+        <kendo-formhint>Type unit place</kendo-formhint>
+        <kendo-formerror>Error: Unit place is required</kendo-formerror> 
+    </kendo-formfield>
+    <kendo-formfield>
+        <kendo-label
+          [for]="dateIn"
+          text="Date of placement"
+          labelCssClass="k-form-label"
+        ></kendo-label>
+        <kendo-datepicker 
+        #dateIn 
+        required
+        format="dd.MM.yyyy"
+        formControlName="dateIn"></kendo-datepicker>
+         <kendo-formhint>Type date of placement </kendo-formhint>
+        <kendo-formerror>Error: date of placement is required</kendo-formerror> 
+    </kendo-formfield>
+    <kendo-formfield>
+      <kendo-label
+        [for]="dateOut"
+        text="Date of release"
+        labelCssClass="k-form-label"
+      ></kendo-label>
+      <kendo-datepicker 
+      #dateOut 
+      format="dd.MM.yyyy"
+      formControlName="dateOut"></kendo-datepicker>
+
+    <kendo-formhint>Type date of release</kendo-formhint>
+  </kendo-formfield>
+
+
+    <kendo-formfield>
+        <kendo-label
+          [for]="full_name"
+          text="Full name"
+          labelCssClass="k-form-label"
+        ></kendo-label>
+        <kendo-textbox
+          #full_name
+          formControlName="full_name"
+          required
+        ></kendo-textbox>
+ 
+        <kendo-formhint>Type full name name</kendo-formhint>
+        <kendo-formerror>Error: full name is required</kendo-formerror> 
+    </kendo-formfield>
+    <kendo-formfield>
+        <kendo-label
+          [for]="phone"
+          text="Phone"
+          labelCssClass="k-form-label"
+        ></kendo-label>
+        <kendo-textbox
+          #phone
+          formControlName="phone"
+          required
+        ></kendo-textbox>
+ 
+        <kendo-formhint>Type phone</kendo-formhint>
+        <kendo-formerror>Error: phone is required</kendo-formerror> 
+    </kendo-formfield>
+    <kendo-formfield>
+        <kendo-label
+          [for]="mass"
+          text="Mass"
+          labelCssClass="k-form-label"
+        ></kendo-label>
+        <kendo-numerictextbox
+          #mass
+          formControlName="mass"
+          required
+          format="n0"
+        ></kendo-numerictextbox>
+    
+        <kendo-formhint>Type unit mass</kendo-formhint>
+        <kendo-formerror>Error: Unit mass is required</kendo-formerror>
+      </kendo-formfield>
+
+
+</form>
+
+<kendo-dialog-actions layout="start">
+  <button
+    kendoButton
+    themeColor="primary"
+  
+    [disabled]="!editForm.valid"
+    (click)="onSave($event)"
+  >
+    Save
+  </button>
+  <button kendoButton  (click)="onCancel($event)">
+    Cancel
+  </button>
+</kendo-dialog-actions>
+</kendo-dialog>
